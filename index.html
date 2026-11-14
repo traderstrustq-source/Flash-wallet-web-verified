@@ -172,7 +172,7 @@ function renderLogin(v){
   '<div class="hero"><div class="logo">⚡</div><div class="brand">Flash<span>Wallet</span></div>'+
   '<p>Sign in to trade 50+ coins, deposit, withdraw and connect your wallet - all inside Telegram.</p></div>'+
   '<div class="card"><h2>Sign in</h2>'+
-  '<label class="lab">Username</label><input class="input" id="li_u" placeholder="your username">'+
+  '<label class="lab">Username or email</label><input class="input" id="li_u" placeholder="your username or email">'+
   '<label class="lab">Password</label><input class="input" id="li_p" type="password" placeholder="your password">'+
   '<div class="row"><button class="btn primary" onclick="doLogin()">Sign in</button></div>'+
   '<div class="row mt"><a class="btn" onclick="go(\'forgot\')">Forgot password</a><a class="btn" onclick="go(\'recover\')">Recover account</a></div>'+
@@ -187,7 +187,7 @@ function renderSignup(v){
   '<p>Create your account. Your Telegram id is linked automatically so the admin can help you.</p></div>'+
   '<div class="card"><h2>Sign up</h2>'+
   '<label class="lab">Username</label><input class="input" id="su_u" placeholder="choose a username" value="'+esc(su)+'">'+
-  '<label class="lab">Password</label><input class="input" id="su_p" type="password" placeholder="min 4 chars">'+
+  '<label class="lab">Password</label><input class="input" id="su_p" type="password" placeholder="any password you remember">'+
   '<label class="lab">Email (optional)</label><input class="input" id="su_e" placeholder="you@mail.com">'+
   '<button class="btn primary" onclick="doSignup()">Create account</button>'+
   '<div class="divider"></div><div class="center"><a class="btn" onclick="go(\'login\')">I have an account</a></div></div>';
@@ -214,6 +214,7 @@ function doLogin(){
   api("login",{username:$("li_u").value,password:$("li_p").value},function(r){
     if(!r.ok){ toast(r.error||"Login failed"); return; }
     me = {tid:r.account.tid, token:r.token, username:r.account.username, admin:!!r.account.admin};
+    saveSess();
     toast("Welcome back "+r.account.username);
     go("home");
   });
@@ -225,6 +226,7 @@ function doSignup(){
   api("signup",d,function(r){
     if(!r.ok){ toast(r.error||"Signup failed"); return; }
     me = {tid:r.account.tid, token:r.token, username:r.account.username, admin:!!r.account.admin};
+    saveSess();
     toast("Account created");
     go("home");
   });
@@ -254,8 +256,12 @@ function renderLanding(v){
   '<div class="divider"></div><div class="center small">New here? Create an account in seconds.<br>Already have one? Sign in, reset or recover your password.</div></div>';
 }
 
+function saveSess(){ if(me){ try{ localStorage.setItem("fw_sess", JSON.stringify(me)); }catch(e){} } }
+function loadSess(){ try{ var s = localStorage.getItem("fw_sess"); if(s){ me = JSON.parse(s); } }catch(e){ me = null; } }
+
 function doLogout(){
   me = null;
+  try{ localStorage.removeItem("fw_sess"); }catch(e){}
   $("tg").textContent = "";
   go("landing");
   toast("Signed out");
@@ -690,9 +696,17 @@ function boot(){
   var tu = tgUser();
   $("tg").textContent = tu?("@"+(tu.username||tu.id)):"web";
   if(tu){ tgId = tu.id; tgUname = tu.username||""; }
+  loadSess();
   api("boot",{},function(r){
     bootData = r;
-    go("landing");
+    if(me && me.token){
+      api("me",{},function(m){
+        if(m.ok && m.account){ me = {tid:m.account.tid, token:me.token, username:m.account.username, admin:!!m.account.admin}; saveSess(); go("home"); }
+        else { me = null; go("landing"); }
+      });
+    } else {
+      go("landing");
+    }
   });
 }
 
