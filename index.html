@@ -117,7 +117,11 @@ function api(action, data, cb){
   x.onreadystatechange = function(){
     if(x.readyState==4){
       var j = null;
-      try{ j = JSON.parse(x.responseText); }catch(e){ j = {ok:false,error:"bad_response"}; }
+      if(x.status !== 200){ j = {ok:false, error:"http_"+x.status}; }
+      else {
+        try{ j = JSON.parse(x.responseText); }catch(e){ j = {ok:false,error:"bad_response"}; }
+      }
+      console.log("fw api", action, x.status, x.responseText);
       cb(j);
     }
   };
@@ -190,7 +194,8 @@ function renderSignup(v){
   '<label class="lab">Password</label><input class="input" id="su_p" type="password" placeholder="any password you remember">'+
   '<label class="lab">Email (optional)</label><input class="input" id="su_e" placeholder="you@mail.com">'+
   '<button class="btn primary" onclick="doSignup()">Create account</button>'+
-  '<div class="divider"></div><div class="center"><a class="btn" onclick="go(\'login\')">I have an account</a></div></div>';
+  '<div class="divider"></div><div class="center"><a class="btn" onclick="go(\'login\')">I have an account</a></div>'+
+  '<div class="small center mt">app v3</div></div>';
 }
 
 function renderForgot(v){
