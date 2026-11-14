@@ -112,7 +112,7 @@ function api(action, data, cb){
   if(me && me.tid){ payload.tid = me.tid; payload.token = me.token; }
   var x = new XMLHttpRequest();
   x.open("POST", apiBase, true);
-  x.setRequestHeader("Content-Type","text/plain");
+  x.setRequestHeader("Content-Type","application/json");
   x.timeout = 25000;
   x.onreadystatechange = function(){
     if(x.readyState==4){
