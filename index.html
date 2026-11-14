@@ -263,7 +263,7 @@ function doLogout(){
 
 function renderHome(v){
   if(!requireAuth()) return;
-  $("tg").innerHTML = '<a onclick="doLogout()" style="cursor:pointer;text-decoration:underline">Logout</a>';
+  $("tg").innerHTML = '<a onclick="doLogout()" style="cursor:pointer;text-decoration:underline">Logout</a>'+(me.admin?' | <a onclick="go(\'admin\')" style="cursor:pointer;text-decoration:underline">Admin</a>':'');
   var c = bootData?bootData.content||{}:{};
   var stats = bootData?bootData.stats||{}:{};
   var bal = me.balance||0;
@@ -277,7 +277,8 @@ function renderHome(v){
   '<div class="card"><h2>Balance</h2><div class="bal"><div class="v">'+bal+'</div><div class="c">USDT</div></div>'+
   '<div class="row mt"><span class="pill">Bonus: '+bonus+'</span><span class="pill green">'+esc(stats.registered||0)+' users</span></div>'+
   '<div class="bar"><i style="width:'+Math.min(100,(bal/10000*100))+'%"></i></div>'+
-  '<div class="row mt"><button class="btn primary" onclick="go(\'wallet\')">Deposit</button><button class="btn good" onclick="go(\'wallet\')">Withdraw</button></div></div>';
+  '<div class="row mt"><button class="btn primary" onclick="go(\'wallet\')">Deposit</button><button class="btn good" onclick="go(\'wallet\')">Withdraw</button></div></div>'+
+  (me.admin?'<div class="card"><h2>Admin</h2><button class="btn danger" onclick="go(\''+'admin\')">Open admin panel</button></div>':'');
   if(ev.length){
     h += '<div class="card"><h2>Events</h2>';
     for(var i=0;i<ev.length;i++){ h += '<div class="ev"><div class="ic">📅</div><div class="t">'+esc(ev[i])+'</div></div>'; }
