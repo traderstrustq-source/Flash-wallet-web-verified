@@ -5,77 +5,88 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>Flash Wallet</title>
 <style>
-:root{--bg:#0b0e14;--card:#151a23;--card2:#1c2330;--line:#2a3342;--txt:#e6e9ef;--mut:#8b93a5;--acc:#3b82f6;--acc2:#22c55e;--warn:#f59e0b;--bad:#ef4444;--r:16px}
+:root{--bg:#05060a;--card:#0f121a;--line:#1c2130;--txt:#e8eaf2;--mut:#94a3b8;--acc:#3b82f6;--acc2:#22c55e;--warn:#f59e0b;--bad:#ef4444;--r:18px;--shadow:0 10px 40px rgba(0,0,0,.55)}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--txt);min-height:100vh;display:flex;justify-content:center}
-#app{width:100%;max-width:430px;min-height:100vh;display:flex;flex-direction:column;background:var(--bg)}
-.top{position:sticky;top:0;z-index:20;background:rgba(11,14,20,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:12px 16px;display:flex;align-items:center;justify-content:space-between}
-.top h1{font-size:17px;font-weight:700;letter-spacing:.3px}
-.top .tg{font-size:11px;color:var(--mut)}
-.hero{padding:22px 16px 14px;background:linear-gradient(160deg,#132039,#0b0e14 70%);border-bottom:1px solid var(--line)}
-.hero .brand{font-size:26px;font-weight:800;letter-spacing:.5px}
-.hero .brand span{color:var(--acc)}
-.hero p{color:var(--mut);font-size:13px;margin-top:6px;line-height:1.5}
-.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin:12px 16px 0}
-.card h2{font-size:14px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:6px}
-.bal{display:flex;align-items:baseline;gap:8px}
-.bal .v{font-size:34px;font-weight:800}
-.bal .c{font-size:12px;color:var(--mut)}
-.pill{display:inline-block;padding:3px 10px;border-radius:999px;font-size:11px;font-weight:700;background:rgba(59,130,246,.15);color:#7eb3ff;border:1px solid rgba(59,130,246,.35)}
-.pill.green{background:rgba(34,197,94,.14);color:#4ade80;border-color:rgba(34,197,94,.35)}
-.row{display:flex;gap:10px;align-items:center}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-.btn{display:block;width:100%;padding:12px;border-radius:12px;border:1px solid var(--line);background:var(--card2);color:var(--txt);font-size:14px;font-weight:600;text-align:center;cursor:pointer;text-decoration:none}
-.btn.primary{background:var(--acc);border-color:var(--acc);color:#fff}
-.btn.good{background:var(--acc2);border-color:var(--acc2);color:#04140a}
-.btn.danger{background:rgba(239,68,68,.15);border-color:rgba(239,68,68,.4);color:#fca5a5}
-.btn:disabled{opacity:.5;cursor:default}
-.input{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:#0f141d;color:var(--txt);font-size:14px;margin-bottom:10px;outline:none}
-.input:focus{border-color:var(--acc)}
-label.lab{display:block;font-size:11px;color:var(--mut);margin:0 0 5px 2px;text-transform:uppercase;letter-spacing:.6px}
-.list{display:flex;flex-direction:column;gap:8px}
-.item{display:flex;align-items:center;gap:10px;padding:12px;border-radius:12px;background:var(--card2);border:1px solid var(--line);cursor:pointer}
-.item .ic{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;background:var(--line);color:#fff}
-.item .nm{font-size:14px;font-weight:700}
-.item .sb{font-size:11px;color:var(--mut)}
-.item .ar{margin-left:auto;color:var(--mut)}
-.tabs{position:sticky;bottom:0;z-index:20;display:grid;grid-template-columns:repeat(5,1fr);background:rgba(11,14,20,.95);backdrop-filter:blur(10px);border-top:1px solid var(--line)}
-.tab{padding:9px 0 12px;text-align:center;font-size:10px;color:var(--mut);cursor:pointer}
-.tab .i{font-size:19px;display:block;margin-bottom:2px}
-.tab.on{color:var(--acc)}
-.tab.on .i{color:var(--acc)}
-.bar{height:8px;border-radius:99px;background:var(--line);overflow:hidden;margin-top:8px}
-.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--acc),#60a5fa);border-radius:99px}
-.stat{display:flex;justify-content:space-between;font-size:12px;padding:6px 0;border-bottom:1px dashed var(--line)}
+html,body{height:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--txt);min-height:100vh}
+#app{width:100%;max-width:430px;min-height:100vh;display:flex;flex-direction:column;background:var(--bg);margin:0 auto}
+.top{position:sticky;top:0;z-index:30;background:rgba(5,6,10,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:14px 16px;display:flex;align-items:center;justify-content:space-between}
+.top h1{font-size:18px;font-weight:800;letter-spacing:.4px}
+.top .tg{font-size:11px;color:var(--mut);font-weight:600}
+.hero{padding:26px 20px 10px;text-align:center;background:radial-gradient(600px circle at 50% -10%, rgba(59,130,246,.16), transparent 60%);border-bottom:1px solid var(--line)}
+.logo{width:52px;height:52px;border-radius:16px;background:linear-gradient(135deg,#3b82f6,#22c55e,#7c3aed);display:inline-flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:14px;box-shadow:0 8px 24px rgba(59,130,246,.45)}
+.brand{font-size:28px;font-weight:900;letter-spacing:-.5px;margin-bottom:8px}
+.brand span{color:var(--acc)}
+.hero p{color:var(--mut);font-size:14px;line-height:1.6;margin-bottom:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px;margin:16px 20px 0}
+.card h2{font-size:15px;font-weight:800;margin-bottom:14px;letter-spacing:-.2px}
+label.lab{display:block;font-size:11px;color:var(--mut);margin-bottom:6px;font-weight:700;letter-spacing:.5px}
+.input{width:100%;padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:#0b0e16;color:var(--txt);font-size:15px;margin-bottom:12px;outline:none}
+.input:focus{border-color:var(--acc);box-shadow:0 0 0 4px rgba(59,130,246,.15)}
+.small{font-size:11.5px;color:var(--mut);text-align:center;margin-top:6px}
+.small a{color:var(--acc);text-decoration:none;font-weight:700}
+.divider{height:1px;background:var(--line);margin:18px 0;opacity:.4}
+.btn{display:block;width:100%;padding:14px;border-radius:14px;border:none;color:#fff;font-size:15px;font-weight:700;text-align:center;cursor:pointer;text-decoration:none;letter-spacing:.3px}
+.btn.primary{background:linear-gradient(135deg,#3b82f6,#2563eb);box-shadow:0 8px 24px rgba(59,130,246,.45)}
+.btn.good{background:linear-gradient(135deg,#22c55e,#16a34a)}
+.btn.secondary{background:#141823;color:var(--txt);border:1px solid var(--line)}
+.btn:disabled{opacity:.55;cursor:default}
+.row{display:flex;gap:10px}
+.row > *{flex:1}
+.center{text-align:center}
+.mt{margin-top:12px}
+.mb{margin-bottom:12px}
+.hidden{display:none!important}
+.dash{flex:1;overflow-y:auto;padding-bottom:110px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px}
+.tile .t{font-size:11px;color:var(--mut);font-weight:700;letter-spacing:.4px;text-transform:uppercase;margin-bottom:6px}
+.tile .v{font-size:26px;font-weight:800}
+.tile .sub{font-size:11.5px;color:var(--mut);margin-top:4px}
+.stat{display:flex;justify-content:space-between;font-size:12px;padding:8px 0;border-bottom:1px dashed var(--line)}
 .stat:last-child{border-bottom:none}
 .stat b{color:#fff}
-.marq{overflow:hidden;white-space:nowrap;margin:10px 0 0}
-.marq span{display:inline-block;padding-left:100%;animation:mq 18s linear infinite;font-size:12px;color:var(--mut)}
-@keyframes mq{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
-.toast{position:fixed;left:50%;bottom:80px;transform:translateX(-50%);background:#1f2937;border:1px solid var(--line);padding:10px 16px;border-radius:12px;font-size:13px;z-index:99;max-width:88%}
-.logo{width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,#3b82f6,#22c55e);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:900;color:#fff;margin-bottom:10px}
-.center{text-align:center}
-.small{font-size:11px;color:var(--mut)}
-.mt{margin-top:10px}.mb{margin-bottom:10px}
-.divider{height:1px;background:var(--line);margin:12px 0}
-.scroll{flex:1;overflow-y:auto;padding-bottom:76px}
-.hidden{display:none!important}
-.net{display:inline-block;padding:4px 10px;border-radius:99px;background:var(--card2);border:1px solid var(--line);font-size:12px;margin:3px}
-.net.on{background:var(--acc);color:#fff;border-color:var(--acc)}
-.plan{border:1px solid var(--line);border-radius:12px;padding:10px;margin-bottom:8px;background:var(--card2)}
-.plan .amt{font-size:16px;font-weight:800}
-.plan .tm{font-size:11px;color:var(--mut)}
-.chat{display:flex;flex-direction:column;gap:8px}
-.msg{max-width:82%;padding:9px 12px;border-radius:12px;font-size:13px;line-height:1.45}
+.pill{display:inline-block;padding:4px 10px;border-radius:999px;font-size:11px;font-weight:700;background:rgba(59,130,246,.12);color:#7eb3ff;border:1px solid rgba(59,130,246,.28)}
+.pill.green{background:rgba(34,197,94,.12);color:#4ade80;border-color:rgba(34,197,94,.28)}
+.list{display:flex;flex-direction:column;gap:10px}
+.item{display:flex;align-items:center;gap:12px;padding:14px;border-radius:16px;background:var(--card);border:1px solid var(--line);cursor:pointer}
+.item .ic{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:var(--line);color:#fff;font-size:17px;flex-shrink:0}
+.item .nm{font-size:15px;font-weight:700;flex:1}
+.item .sb{font-size:12px;color:var(--mut)}
+.item .ar{color:var(--mut)}
+.net{display:inline-block;padding:5px 11px;border-radius:10px;background:var(--line);font-size:12px;margin:4px 4px 0 0;cursor:pointer}
+.net.on{background:var(--acc);color:#fff}
+.plan{border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:10px;background:var(--card)}
+.plan.sel{border-color:var(--acc);background:linear-gradient(180deg,rgba(59,130,246,.08),var(--card))}
+.plan .amt{font-size:17px;font-weight:800}
+.plan .tm{font-size:12px;color:var(--mut)}
+.plan .opts{display:flex;gap:8px;margin-top:10px}
+.chat{display:flex;flex-direction:column;gap:10px}
+.msg{max-width:85%;padding:10px 14px;border-radius:14px;font-size:14px;line-height:1.5}
 .msg.u{align-self:flex-end;background:var(--acc);color:#fff;border-bottom-right-radius:4px}
-.msg.a{align-self:flex-start;background:var(--card2);border:1px solid var(--line);border-bottom-left-radius:4px}
-.wal{display:flex;align-items:center;gap:10px;padding:11px;border-radius:12px;background:var(--card2);border:1px solid var(--line);margin-bottom:8px;cursor:pointer}
-.wal .ic{width:32px;height:32px;border-radius:10px;background:var(--line);display:flex;align-items:center;justify-content:center;font-size:15px}
-.wal .nm{font-size:13px;font-weight:700}
+.msg.a{align-self:flex-start;background:#141823;border:1px solid var(--line);border-bottom-left-radius:4px}
+.wal{display:flex;align-items:center;gap:12px;padding:14px;border-radius:16px;background:var(--card);border:1px solid var(--line);margin-bottom:10px;cursor:pointer}
+.wal .ic{width:38px;height:38px;border-radius:12px;background:var(--line);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.wal .nm{font-size:14px;font-weight:700;flex:1}
 .wal .sb{font-size:11px;color:var(--mut)}
-.ev{display:flex;gap:10px;align-items:center;padding:10px;border-radius:12px;background:var(--card2);border:1px solid var(--line);margin-bottom:8px}
-.ev .d{font-size:10px;color:var(--mut)}
-.ev .t{font-size:13px;font-weight:600}
+.ev{display:flex;gap:10px;align-items:center;padding:12px;border-radius:16px;background:var(--card);border:1px solid var(--line);margin-bottom:10px}
+.ev .d{font-size:11px;color:var(--mut)}
+.ev .t{font-size:14px;font-weight:700}
+.tabs{position:sticky;bottom:0;z-index:30;display:grid;grid-template-columns:repeat(5,1fr);background:rgba(5,6,10,.95);backdrop-filter:blur(12px);border-top:1px solid var(--line);padding-top:8px}
+.tab{padding:10px 0 14px;text-align:center;font-size:10px;color:var(--mut);cursor:pointer;position:relative}
+.tab .i{font-size:20px;display:block;margin-bottom:4px}
+.tab.on{color:var(--acc)}
+.tab.on .i{color:var(--acc)}
+.toast{position:fixed;left:50%;bottom:100px;transform:translateX(-50%);background:#0f121a;border:1px solid var(--line);padding:10px 16px;border-radius:14px;font-size:13px;z-index:99;max-width:86%}
+.auth{max-width:410px;margin:0 auto;padding:24px 20px 120px}
+.auth .hero{padding-top:4px}
+.auth-card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:28px 22px;margin:20px 20px 0}
+.auth-card h2{font-size:16px;font-weight:800;margin-bottom:8px}
+.auth-sub{font-size:12.5px;color:var(--mut);margin-bottom:22px;line-height:1.5}
+.form-group{margin-bottom:14px}
+.err{color:var(--bad);font-size:12px;margin-top:6px;text-align:center}
+body.auth-mode{background:#eaf0ff;color:#101b45}
+.auth-panel{background:#f7faff;border-radius:24px;padding:22px;border:1px solid #fff}.auth-field{background:#f0f4ff;border-radius:16px;padding:12px;border:1px solid #fff}.auth-submit{background:linear-gradient(90deg,#3187ff,#1749dc);color:#fff;border-radius:18px;padding:16px;border:0}.wallet-mode .tile{background:#171d19;border-radius:18px;border-color:#303b2d}.wallet-mode .btn.primary{background:#b9f65b;color:#15210c;border-color:#b9f65b}
 </style>
 </head>
 <body>
@@ -84,7 +95,7 @@ label.lab{display:block;font-size:11px;color:var(--mut);margin:0 0 5px 2px;text-
     <h1 id="ttl">Flash Wallet</h1>
     <div class="tg" id="tg"></div>
   </div>
-  <div class="scroll" id="view"></div>
+  <div class="auth" id="view"></div>
   <div class="tabs" id="tabs"></div>
 </div>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
@@ -96,47 +107,70 @@ var tgUname = "";
 var me = null;
 var bootData = null;
 var sel = {coin:"USDT", net:"TRC20", plan:null, wallet:""};
-
 function $(id){ return document.getElementById(id); }
 function esc(s){ return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
-
 function tgUser(){
   try{ if(window.Telegram && Telegram.WebApp && Telegram.WebApp.initDataUnsafe){ return Telegram.WebApp.initDataUnsafe.user || null; } }catch(e){}
   return null;
 }
-
 function api(action, data, cb){
   var payload = data || {};
   payload.action = action;
   payload.app_key = APP_SECRET;
   if(me && me.tid){ payload.tid = me.tid; payload.token = me.token; }
-  var x = new XMLHttpRequest();
-  x.open("POST", apiBase, true);
-  x.setRequestHeader("Content-Type","application/json");
-  x.timeout = 25000;
-  x.onreadystatechange = function(){
-    if(x.readyState==4){
-      var j = null;
-      if(x.status !== 200){ j = {ok:false, error:"http_"+x.status}; }
-      else {
-        try{ j = JSON.parse(x.responseText); }catch(e){ j = {ok:false,error:"bad_response"}; }
-      }
-      console.log("fw api", action, x.status, x.responseText);
-      cb(j);
-    }
-  };
-  x.onerror = function(){ cb({ok:false,error:"network"}); };
-  x.send(JSON.stringify(payload));
-}
+  var qs = "";
+  var k;
+  for(k in payload){
+    if(!payload.hasOwnProperty(k)){ continue; }
+    var v = payload[k];
+    if(v === null || v === undefined){ v = ""; }
+    qs += "&" + encodeURIComponent(k) + "=" + encodeURIComponent(String(v));
+  }
+  if(qs){ qs = qs.slice(1); }
+  var url = apiBase + "&" + qs;
 
+  function parse(txt, status){
+    var j = null;
+    try{ j = JSON.parse(txt); }catch(e){ j = null; }
+    if(j && typeof j === "object"){ return j; }
+    return {ok:false, error:"bad_response", http:status, text:String(txt).slice(0,120)};
+  }
+
+  if(!window.fetch){
+    xbk();
+    return;
+  }
+  var done = false;
+  fetch(url, {method:"GET", cache:"no-store"}).then(function(r){
+    return r.text().then(function(t){ return {s:r.status, t:t}; });
+  }).then(function(o){
+    if(done){ return; }
+    done = true;
+    cb(parse(o.t, o.s));
+  }).catch(function(){
+    if(done){ return; }
+    xbk();
+  });
+
+  function xbk(){
+    var x = new XMLHttpRequest();
+    x.open("GET", url, true);
+    x.timeout = 25000;
+    x.onreadystatechange = function(){
+      if(x.readyState==4 && !done){ done = true; cb(parse(x.responseText, x.status)); }
+    };
+    x.onerror = function(){ if(!done){ done = true; cb({ok:false, error:"network"}); } };
+    x.send();
+  }
+}
 function toast(t){
   var d = document.createElement("div");
   d.className = "toast"; d.textContent = t;
   document.body.appendChild(d);
   setTimeout(function(){ d.remove(); }, 2600);
 }
-
 function go(screen){
+  document.body.className = (screen=="landing" || screen=="login" || screen=="signup" || screen=="forgot" || screen=="recover") ? "auth-mode" : "wallet-mode";
   var v = $("view");
   if(screen=="landing") renderLanding(v);
   else if(screen=="home") renderHome(v);
@@ -152,7 +186,6 @@ function go(screen){
   setTab(screen);
   window.scrollTo(0,0);
 }
-
 function setTab(s){
   var tabs = [["home","Home"],["trade","Trade"],["wallet","Wallet"],["connect","Wallet"],["support","Support"]];
   var t = $("tabs");
@@ -164,60 +197,73 @@ function setTab(s){
   }
   t.innerHTML = h;
 }
-
 function requireAuth(){
   if(!me){ go("login"); return false; }
   return true;
 }
-
+function errShow(el, msg){
+  var e = $(el);
+  if(e){ e.textContent = msg; e.style.display = "block"; }
+}
+function hideErr(el){
+  var e = $(el);
+  if(e){ e.style.display = "none"; }
+}
 function renderLogin(v){
   $("tg").textContent = "";
   v.innerHTML =
   '<div class="hero"><div class="logo">⚡</div><div class="brand">Flash<span>Wallet</span></div>'+
-  '<p>Sign in to trade 50+ coins, deposit, withdraw and connect your wallet - all inside Telegram.</p></div>'+
-  '<div class="card"><h2>Sign in</h2>'+
-  '<label class="lab">Username or email</label><input class="input" id="li_u" placeholder="your username or email">'+
-  '<label class="lab">Password</label><input class="input" id="li_p" type="password" placeholder="your password">'+
-  '<div class="row"><button class="btn primary" onclick="doLogin()">Sign in</button></div>'+
-  '<div class="row mt"><a class="btn" onclick="go(\'forgot\')">Forgot password</a><a class="btn" onclick="go(\'recover\')">Recover account</a></div>'+
-  '<div class="divider"></div><div class="center small">No account yet?</div>'+
-  '<button class="btn good mt" onclick="go(\'signup\')">Create account</button></div>';
+  '<p style="margin-bottom:24px">Sign in to trade 50+ coins, deposit, withdraw and connect your wallet.</p>'+
+  '<div class="auth-card">'+
+  '<div class="form-group"><label class="lab">Username or email</label><input class="input" id="li_u" placeholder="your username or email"></div>'+
+  '<div class="form-group"><label class="lab">Password</label><input class="input" id="li_p" type="password" placeholder="your password"></div>'+
+  '<div class="err" id="li_err" style="display:none"></div>'+
+  '<button class="btn primary" onclick="doLogin()">Sign in</button>'+
+  '<div class="row mt"><a class="btn secondary" onclick="go(\'forgot\')">Forgot password</a><a class="btn secondary" onclick="go(\'recover\')">Recover account</a></div>'+
+  '<div class="divider"></div><div class="center small">No account yet? <a onclick="go(\'signup\')" style="color:var(--acc);font-weight:700">Create account</a></div>'+
+  '</div>';
 }
-
 function renderSignup(v){
   var su = tgId ? ("tg_"+tgId) : "";
   v.innerHTML =
   '<div class="hero"><div class="logo">⚡</div><div class="brand">Flash<span>Wallet</span></div>'+
-  '<p>Create your account. Your Telegram id is linked automatically so the admin can help you.</p></div>'+
-  '<div class="card"><h2>Sign up</h2>'+
-  '<label class="lab">Username</label><input class="input" id="su_u" placeholder="choose a username" value="'+esc(su)+'">'+
-  '<label class="lab">Password</label><input class="input" id="su_p" type="password" placeholder="any password you remember">'+
-  '<label class="lab">Email (optional)</label><input class="input" id="su_e" placeholder="you@mail.com">'+
+  '<p style="margin-bottom:24px">Create your account. Your Telegram id is linked automatically so the admin can help you.</p>'+
+  '<div class="auth-card">'+
+  '<div class="form-group"><label class="lab">Username</label><input class="input" id="su_u" placeholder="choose a username" value="'+esc(su)+'"></div>'+
+  '<div class="form-group"><label class="lab">Password</label><input class="input" id="su_p" type="password" placeholder="any password you remember"></div>'+
+  '<div class="form-group"><label class="lab">Email (optional)</label><input class="input" id="su_e" placeholder="you@mail.com"></div>'+
+  '<div class="err" id="su_err" style="display:none"></div>'+
   '<button class="btn primary" onclick="doSignup()">Create account</button>'+
-  '<div class="divider"></div><div class="center"><a class="btn" onclick="go(\'login\')">I have an account</a></div>'+
-  '<div class="small center mt">app v3</div></div>';
+  '<div class="divider"></div><div class="center small">Already have an account? <a onclick="go(\'login')" style="color:var(--acc);font-weight:700">Sign in</a></div>'+
+  '</div>';
 }
-
 function renderForgot(v){
   v.innerHTML =
-  '<div class="card mt"><h2>Forgot password</h2>'+
-  '<label class="lab">Username or email</label><input class="input" id="fg_k" placeholder="your username / email">'+
+  '<div class="hero"><div class="logo">⚡</div><div class="brand">Flash<span>Wallet</span></div>'+
+  '<p style="margin-bottom:24px">Forgot your password?</p>'+
+  '<div class="auth-card">'+
+  '<div class="form-group"><label class="lab">Username or email</label><input class="input" id="fg_k" placeholder="your username / email"></div>'+
+  '<div class="err" id="fg_err" style="display:none"></div>'+
   '<button class="btn primary" onclick="doForgot()">Get recovery code</button>'+
-  '<div class="divider"></div><div class="center"><a class="btn" onclick="go(\'login\')">Back to sign in</a></div></div>';
+  '<div class="divider"></div><div class="center"><a class="btn secondary" onclick="go(\'login')">Back to sign in</a></div>'+
+  '</div>';
 }
-
 function renderRecover(v){
   v.innerHTML =
-  '<div class="card mt"><h2>Recover account</h2>'+
-  '<label class="lab">Recovery code</label><input class="input" id="rc_c" placeholder="6-char code">'+
-  '<label class="lab">New password</label><input class="input" id="rc_p" type="password" placeholder="new password">'+
+  '<div class="hero"><div class="logo">⚡</div><div class="brand">Flash<span>Wallet</span></div>'+
+  '<p style="margin-bottom:24px">Recover your account</p>'+
+  '<div class="auth-card">'+
+  '<div class="form-group"><label class="lab">Recovery code</label><input class="input" id="rc_c" placeholder="6-char code"></div>'+
+  '<div class="form-group"><label class="lab">New password</label><input class="input" id="rc_p" type="password" placeholder="new password"></div>'+
+  '<div class="err" id="rc_err" style="display:none"></div>'+
   '<button class="btn primary" onclick="doRecover()">Reset password</button>'+
-  '<div class="divider"></div><div class="center"><a class="btn" onclick="go(\'forgot\')">Back</a></div></div>';
+  '<div class="divider"></div><div class="center"><a class="btn secondary" onclick="go(\'forgot\')">Back</a></div>'+
+  '</div>';
 }
-
 function doLogin(){
+  hideErr("li_err");
   api("login",{username:$("li_u").value,password:$("li_p").value},function(r){
-    if(!r.ok){ toast(r.error||"Login failed"); return; }
+    if(!r.ok){ errShow("li_err", r.error||"Login failed"); return; }
     me = {tid:r.account.tid, token:r.token, username:r.account.username, admin:!!r.account.admin};
     saveSess();
     toast("Welcome back "+r.account.username);
@@ -226,10 +272,11 @@ function doLogin(){
 }
 
 function doSignup(){
+  hideErr("su_err");
   var d = {username:$("su_u").value,password:$("su_p").value,email:$("su_e").value};
   if(tgId){ d.tid = tgId; }
   api("signup",d,function(r){
-    if(!r.ok){ toast(r.error||"Signup failed"); return; }
+    if(!r.ok){ errShow("su_err", r.error||"Signup failed"); return; }
     me = {tid:r.account.tid, token:r.token, username:r.account.username, admin:!!r.account.admin};
     saveSess();
     toast("Account created");
@@ -238,15 +285,17 @@ function doSignup(){
 }
 
 function doForgot(){
+  hideErr("fg_err");
   api("forgot",{username:$("fg_k").value},function(r){
-    if(!r.ok){ toast(r.error||"Not found"); return; }
+    if(!r.ok){ errShow("fg_err", r.error||"Not found"); return; }
     toast("Recovery code: "+r.recovery+" - save it now!");
   });
 }
 
 function doRecover(){
+  hideErr("rc_err");
   api("recover",{recovery:$("rc_c").value,password:$("rc_p").value},function(r){
-    if(!r.ok){ toast(r.error||"Bad code"); return; }
+    if(!r.ok){ errShow("rc_err", r.error||"Bad code"); return; }
     toast("Password reset. Sign in now.");
     go("login");
   });
@@ -255,10 +304,11 @@ function doRecover(){
 function renderLanding(v){
   v.innerHTML =
   '<div class="hero"><div class="logo">⚡</div><div class="brand">Flash<span>Wallet</span></div>'+
-  '<p>Trade 50+ coins, deposit, withdraw and connect your wallet - all inside Telegram.</p></div>'+
-  '<div class="card"><h2>Welcome</h2>'+
-  '<div class="row"><button class="btn primary" onclick="go(\'signup\')">Sign up</button><button class="btn" onclick="go(\'login\')">Sign in</button></div>'+
-  '<div class="divider"></div><div class="center small">New here? Create an account in seconds.<br>Already have one? Sign in, reset or recover your password.</div></div>';
+  '<p style="margin-bottom:22px">Trade 50+ coins, deposit, withdraw and connect your wallet - all inside Telegram.</p>'+
+  '<div class="auth-card">'+
+  '<div class="row"><button class="btn primary" onclick="go(\'signup\')">Sign up</button><button class="btn secondary" onclick="go(\'login\')">Sign in</button></div>'+
+  '<div class="divider"></div><div class="center small">New here? Create an account in seconds.<br>Already have one? Sign in, reset or recover your password.</div>'+
+  '</div>';
 }
 
 function saveSess(){ if(me){ try{ localStorage.setItem("fw_sess", JSON.stringify(me)); }catch(e){} } }
@@ -282,17 +332,17 @@ function renderHome(v){
   var ev = c.events||[];
   var topw = c.top_withdraw||[];
   var topt = c.top_trade||[];
-  var h = '<div class="hero"><div class="brand">Hello, '+esc(me.username)+'!</div>'+
-  '<p>Your Flash Wallet is ready. Trade, deposit and withdraw in seconds.</p>'+
-  '<div class="marq"><span>'+esc(c.welcome_text||"")+'</span></div></div>'+
-  '<div class="card"><h2>Balance</h2><div class="bal"><div class="v">'+bal+'</div><div class="c">USDT</div></div>'+
-  '<div class="row mt"><span class="pill">Bonus: '+bonus+'</span><span class="pill green">'+esc(stats.registered||0)+' users</span></div>'+
-  '<div class="bar"><i style="width:'+Math.min(100,(bal/10000*100))+'%"></i></div>'+
-  '<div class="row mt"><button class="btn primary" onclick="go(\'wallet\')">Deposit</button><button class="btn good" onclick="go(\'wallet\')">Withdraw</button></div></div>'+
-  (me.admin?'<div class="card"><h2>Admin</h2><button class="btn danger" onclick="go(\''+'admin\')">Open admin panel</button></div>':'');
+  var h = '<div class="dash"><div class="hero"><div class="brand">Hello, '+esc(me.username)+'!</div>'+
+  '<p style="margin-top:4px">Your Flash Wallet is ready. Trade, deposit and withdraw in seconds.</p></div>'+
+  '<div class="grid">'+
+  '<div class="tile"><div class="t">Balance</div><div class="v">'+bal+'</div><div class="sub">USDT</div></div>'+
+  '<div class="tile"><div class="t">Bonus</div><div class="v">'+bonus+'</div><div class="sub">USDT</div></div>'+
+  '</div>'+
+  '<div class="row mt"><button class="btn primary" onclick="go(\'wallet\')">Deposit</button><button class="btn good" onclick="go(\'wallet\')">Withdraw</button></div>'+
+  (me.admin?'<div class="row mt"><button class="btn secondary" onclick="go(\'admin\')">Open admin panel</button></div>':'');
   if(ev.length){
     h += '<div class="card"><h2>Events</h2>';
-    for(var i=0;i<ev.length;i++){ h += '<div class="ev"><div class="ic">📅</div><div class="t">'+esc(ev[i])+'</div></div>'; }
+    for(var i=0;i<ev.length;i++){ h += '<div class="ev"><div class="d">📅</div><div class="t">'+esc(ev[i])+'</div></div>'; }
     h += '</div>';
   }
   h += '<div class="card"><h2>Live counters</h2>'+
@@ -311,6 +361,7 @@ function renderHome(v){
     for(var k=0;k<topt.length;k++){ h += '<div class="stat"><span>'+esc(topt[k].label||"")+'</span><b>'+esc(topt[k].value||"")+'</b></div>'; }
     h += '</div>';
   }
+  h += '</div>';
   v.innerHTML = h;
 }
 
@@ -318,12 +369,13 @@ function renderTrade(v){
   if(!requireAuth()) return;
   var coins = bootData?bootData.coins||{}:{};
   var names = Object.keys(coins);
-  var h = '<div class="card mt"><h2>Choose a coin</h2><div class="list">';
+  var h = '<div class="dash"><div class="hero"><div class="brand">Trade</div><p style="margin-top:4px">Choose a coin, then network and plan.</p></div>'+
+  '<div class="card"><h2>Choose a coin</h2><div class="list">';
   for(var i=0;i<names.length;i++){
     var n = names[i];
     h += '<div class="item" onclick="selCoin(\''+esc(n)+'\')"><div class="ic">'+esc(n.slice(0,2))+'</div><div><div class="nm">'+esc(n)+'</div><div class="sb">'+(coins[n].networks||[]).length+' networks</div></div><div class="ar">›</div></div>';
   }
-  h += '</div></div><div id="netsel"></div>';
+  h += '</div></div><div id="netsel"></div></div>';
   v.innerHTML = h;
   if(sel.coin && coins[sel.coin]) showNets(sel.coin);
 }
@@ -332,11 +384,11 @@ function selCoin(c){ sel.coin=c; showNets(c); }
 
 function showNets(c){
   var nets = (bootData.coins[c]||{}).networks||[];
-  var h = '<div class="card"><h2>'+esc(c)+' networks</h2>';
+  var h = '<div class="card"><h2>'+esc(c)+' networks</h2><div>';
   for(var i=0;i<nets.length;i++){
     h += '<span class="net'+(sel.net==nets[i]?" on":"")+'" onclick="selNet(\''+esc(c)+'\',\''+esc(nets[i])+'\')">'+esc(nets[i])+'</span>';
   }
-  h += '<div class="divider"></div><div id="plans"></div></div>';
+  h += '</div><div class="divider"></div><div id="plans"></div></div>';
   $("netsel").innerHTML = h;
   showPlans(c);
 }
