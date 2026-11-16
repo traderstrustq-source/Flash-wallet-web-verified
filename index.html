@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>Flash Wallet</title>
 <style>
+#boot{position:fixed;left:0;right:0;bottom:110px;text-align:center;font-size:13px;line-height:1.6;padding:0 22px}
+body.auth-mode #boot{bottom:150px}
+#boot .b1{font-size:26px;font-weight:900;letter-spacing:-.5px;margin-bottom:8px}
+#boot .b2{opacity:.75}
+#boot .b3{margin-top:14px;font-weight:800}
+#boot .b3 a{display:block;margin-top:8px;padding:12px;border-radius:14px;background:#b9f65b;color:#14210b;font-weight:800;text-decoration:none}
+body.auth-mode #boot .b3 a{background:#1749dc;color:#fff}
 :root{--bg:#05060a;--card:#0f121a;--line:#1c2130;--txt:#e8eaf2;--mut:#94a3b8;--acc:#3b82f6;--acc2:#22c55e;--warn:#f59e0b;--bad:#ef4444;--r:18px;--shadow:0 10px 40px rgba(0,0,0,.55)}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html,body{height:100%}
@@ -85,8 +92,62 @@ label.lab{display:block;font-size:11px;color:var(--mut);margin-bottom:6px;font-w
 .auth-sub{font-size:12.5px;color:var(--mut);margin-bottom:22px;line-height:1.5}
 .form-group{margin-bottom:14px}
 .err{color:var(--bad);font-size:12px;margin-top:6px;text-align:center}
-body.auth-mode{background:#eaf0ff;color:#101b45}
-.auth-panel{background:#f7faff;border-radius:24px;padding:22px;border:1px solid #fff}.auth-field{background:#f0f4ff;border-radius:16px;padding:12px;border:1px solid #fff}.auth-submit{background:linear-gradient(90deg,#3187ff,#1749dc);color:#fff;border-radius:18px;padding:16px;border:0}.wallet-mode .tile{background:#171d19;border-radius:18px;border-color:#303b2d}.wallet-mode .btn.primary{background:#b9f65b;color:#15210c;border-color:#b9f65b}
+/* ---------- AUTH MODE (light, like the sign-in mock) ---------- */
+body.auth-mode{background:#eef3ff;color:#0f1b3d}
+body.auth-mode #app{background:#eef3ff}
+body.auth-mode .top{display:none}
+body.auth-mode .tabs{display:none}
+body.auth-mode .auth{padding:0;max-width:100%}
+body.auth-mode .hero{background:transparent;border-bottom:none;padding:34px 22px 6px;text-align:center}
+body.auth-mode .hero .logo{background:linear-gradient(135deg,#3b82f6,#1d4ed8);box-shadow:0 10px 26px rgba(37,99,235,.35)}
+body.auth-mode .hero .brand{color:#0f1b3d;font-size:26px}
+body.auth-mode .hero .brand span{color:#2563eb}
+body.auth-mode .hero p{color:#5a6b8c;font-size:13.5px;margin-bottom:0}
+body.auth-mode .auth-card{background:#ffffff;border:1px solid #ffffff;border-radius:26px;padding:26px 22px;margin:20px 18px 0;box-shadow:0 18px 50px rgba(37,99,235,.14)}
+body.auth-mode .auth-card h2{color:#0f1b3d}
+body.auth-mode label.lab{color:#7b89a8}
+body.auth-mode .input{background:#f2f6ff;border:1px solid #ffffff;color:#0f1b3d;border-radius:16px}
+body.auth-mode .input:focus{border-color:#3187ff;box-shadow:0 0 0 4px rgba(49,135,255,.18)}
+body.auth-mode .btn.primary{background:linear-gradient(90deg,#3187ff,#1749dc);color:#fff;border-radius:18px;box-shadow:0 12px 28px rgba(23,73,220,.32)}
+body.auth-mode .btn.secondary{background:#ffffff;color:#1749dc;border:1px solid #dbe6ff;border-radius:16px}
+body.auth-mode .btn.good{background:linear-gradient(90deg,#3187ff,#1749dc);color:#fff}
+body.auth-mode .small{color:#7b89a8}
+body.auth-mode .divider{background:#dbe6ff;opacity:1}
+body.auth-mode .err{color:#dc2626}
+body.auth-mode .toast{background:#0f1b3d;border-color:#0f1b3d;color:#fff}
+
+/* ---------- WALLET MODE (dark, like the dashboard mock) ---------- */
+body.wallet-mode{background:#070a08;color:#e9f2e6}
+body.wallet-mode #app{background:#070a08}
+body.wallet-mode .top{background:rgba(7,10,8,.94);border-bottom:1px solid #1e2a20}
+body.wallet-mode .top h1{color:#eaf7e4}
+body.wallet-mode .hero{background:radial-gradient(600px circle at 50% -20%, rgba(185,246,91,.16), transparent 62%);border-bottom:1px solid #1e2a20}
+body.wallet-mode .hero .brand{color:#f2fbea}
+body.wallet-mode .card{background:#101711;border:1px solid #22301f;border-radius:20px}
+body.wallet-mode .card h2{color:#eaf7e4}
+body.wallet-mode label.lab{color:#7f9b83}
+body.wallet-mode .input{background:#0b120c;border:1px solid #22301f;color:#eaf7e4;border-radius:16px}
+body.wallet-mode .btn.primary{background:#b9f65b;color:#14210b;border-color:#b9f65b;box-shadow:none}
+body.wallet-mode .btn.good{background:#b9f65b;color:#14210b}
+body.wallet-mode .btn.secondary{background:#141d15;color:#eaf7e4;border:1px solid #22301f}
+body.wallet-mode .tile{background:#101711;border:1px solid #22301f;border-radius:20px}
+body.wallet-mode .tile .v{color:#d7ff8a}
+body.wallet-mode .item{background:#101711;border:1px solid #22301f}
+body.wallet-mode .wal{background:#101711;border:1px solid #22301f}
+body.wallet-mode .ev{background:#101711;border:1px solid #22301f}
+body.wallet-mode .plan{background:#101711;border:1px solid #22301f}
+body.wallet-mode .plan.sel{border-color:#b9f65b}
+body.wallet-mode .net{background:#16201a;border:1px solid #22301f;color:#cfe3cd}
+body.wallet-mode .net.on{background:#b9f65b;color:#14210b;border-color:#b9f65b}
+body.wallet-mode .msg.a{background:#141d15;border:1px solid #22301f;color:#eaf7e4}
+body.wallet-mode .msg.u{background:#b9f65b;color:#14210b}
+body.wallet-mode .stat b{color:#d7ff8a}
+body.wallet-mode .pill{background:rgba(185,246,91,.12);color:#c9f77f;border-color:rgba(185,246,91,.3)}
+body.wallet-mode .pill.green{background:rgba(185,246,91,.18);color:#d7ff8a;border-color:rgba(185,246,91,.35)}
+body.wallet-mode .tabs{background:rgba(7,10,8,.96);border-top:1px solid #1e2a20}
+body.wallet-mode .tab.on{color:#b9f65b}
+body.wallet-mode .tab.on .i{color:#b9f65b}
+body.wallet-mode .toast{background:#16201a;border-color:#2c3d2b;color:#eaf7e4}
 </style>
 </head>
 <body>
@@ -98,6 +159,7 @@ body.auth-mode{background:#eaf0ff;color:#101b45}
   <div class="auth" id="view"></div>
   <div class="tabs" id="tabs"></div>
 </div>
+<div id="boot"><div class="b1">FlashWallet</div><div class="b2">Loading your wallet...</div><div class="b3" id="bootbox"></div></div>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script>
 var APP_SECRET = "fw_live_7Kq2Vn8Rt5Xw9Ym3Zb6Pd4Ls";
@@ -127,39 +189,45 @@ function api(action, data, cb){
     qs += "&" + encodeURIComponent(k) + "=" + encodeURIComponent(String(v));
   }
   if(qs){ qs = qs.slice(1); }
-  var url = apiBase + "&" + qs;
+  var base = apiBase;
+  if(base.indexOf("?") >= 0){ base = base + "&" + qs; }
+  else { base = base + "?" + qs; }
 
   function parse(txt, status){
     var j = null;
     try{ j = JSON.parse(txt); }catch(e){ j = null; }
     if(j && typeof j === "object"){ return j; }
-    return {ok:false, error:"bad_response", http:status, text:String(txt).slice(0,120)};
+    return {ok:false, error:"bad_response", http:status, text:String(txt).slice(0,150)};
   }
 
-  if(!window.fetch){
-    xbk();
+  var done = false;
+  function finish(j){ if(done){ return; } done = true; cb(j); }
+
+  if(qs.length > 1200){
+    try{
+      var big = JSON.stringify(payload).replace(/'/g, "\u0027");
+      fetch(apiBase, {method:"POST", mode:"no-cors", headers:{"Content-Type":"text/plain"}, body: big});
+    }catch(e){}
+    cb({ok:true, sent:"blind"});
     return;
   }
-  var done = false;
-  fetch(url, {method:"GET", cache:"no-store"}).then(function(r){
-    return r.text().then(function(t){ return {s:r.status, t:t}; });
-  }).then(function(o){
-    if(done){ return; }
-    done = true;
-    cb(parse(o.t, o.s));
-  }).catch(function(){
-    if(done){ return; }
+
+  if(window.fetch){
+    fetch(base, {method:"GET", cache:"no-store"}).then(function(r){
+      return r.text().then(function(t){ return {s:r.status, t:t}; });
+    }).then(function(o){ finish(parse(o.t, o.s)); }).catch(function(){ xbk(); });
+  } else {
     xbk();
-  });
+  }
 
   function xbk(){
     var x = new XMLHttpRequest();
-    x.open("GET", url, true);
+    x.open("GET", base, true);
     x.timeout = 25000;
     x.onreadystatechange = function(){
-      if(x.readyState==4 && !done){ done = true; cb(parse(x.responseText, x.status)); }
+      if(x.readyState==4){ finish(parse(x.responseText, x.status)); }
     };
-    x.onerror = function(){ if(!done){ done = true; cb({ok:false, error:"network"}); } };
+    x.onerror = function(){ finish({ok:false, error:"network"}); };
     x.send();
   }
 }
@@ -170,6 +238,8 @@ function toast(t){
   setTimeout(function(){ d.remove(); }, 2600);
 }
 function go(screen){
+  var bb = $("boot");
+  if(bb){ bb.style.display = "none"; }
   document.body.className = (screen=="landing" || screen=="login" || screen=="signup" || screen=="forgot" || screen=="recover") ? "auth-mode" : "wallet-mode";
   var v = $("view");
   if(screen=="landing") renderLanding(v);
@@ -576,6 +646,7 @@ function renderAdmin(v){
   '<button class="btn" onclick="admAddr()">Deposit addresses</button>'+
   '<button class="btn" onclick="admEvents()">Events & counters</button>'+
   '<button class="btn" onclick="admQuestions()">Connect questions</button>'+
+  '<button class="btn" onclick="admVideo()">Upload promo video</button>'+
   '<button class="btn" onclick="admStats()">Stats</button>'+
   '<button class="btn" onclick="admLogs()">Logs</button>'+
   '</div><div class="divider"></div><div id="adm_out"></div></div>';
@@ -644,9 +715,28 @@ function admReply(tid){
   api("admin_ticket_reply",{tid:tid,text:t},function(r){ toast(r.ok?"Reply sent":r.error); admOpen(tid); });
 }
 function admBroadcast(){
-  var t = prompt("Broadcast text to ALL users:");
+  var t = prompt("Broadcast text to ALL users (shows inside the app and in Telegram):");
   if(t===null) return;
   api("admin_broadcast",{text:t},function(r){ toast(r.ok?("Sent to "+r.sent+" users"):r.error); });
+}
+function admVideo(){
+  var h = '<h2>Upload promo video</h2><p class="small">The video plays on /start in the bot. Max ~20 MB.</p>'+
+  '<input type="file" id="vd_f" accept="video/*" class="input">'+
+  '<button class="btn primary" onclick="admVideoSend()">Upload</button>';
+  admOut(h);
+}
+function admVideoSend(){
+  var f = $("vd_f").files[0];
+  if(!f){ toast("Pick a video first"); return; }
+  var rd = new FileReader();
+  rd.onload = function(){
+    var b64 = String(rd.result).split(",")[1]||"";
+    toast("Uploading...");
+    api("admin_video_upload",{name:f.name,data:b64},function(r){
+      toast(r.ok ? (r.file_id?("Video uploaded (file_id "+String(r.file_id).slice(0,18)+"...)"):"Sent to admin, file_id pending") : "Upload failed");
+    });
+  };
+  rd.readAsDataURL(f);
 }
 function admContent(){
   api("content",{},function(r){
@@ -749,22 +839,47 @@ function admLogs(){
   });
 }
 
+function bootFail(msg){
+  var b = $("boot");
+  if(!b){ return; }
+  var box = $("bootbox");
+  if(box){
+    box.innerHTML = '<div style="opacity:.8;margin-bottom:8px">'+esc(msg)+'</div>'+
+    '<a onclick="location.reload()">Try again</a>';
+  }
+}
+
 function boot(){
   var tu = tgUser();
   $("tg").textContent = tu?("@"+(tu.username||tu.id)):"web";
   if(tu){ tgId = tu.id; tgUname = tu.username||""; }
   loadSess();
+
+  var b = $("boot");
+  if(b){ b.className = "auth-mode"; }
+
   api("boot",{},function(r){
     bootData = r;
+    if(!r || r.ok !== true){
+      bootFail("Could not reach the server" + (r && r.error ? (" (" + r.error + ")") : "") + ".");
+      return;
+    }
     if(me && me.token){
       api("me",{},function(m){
-        if(m.ok && m.account){ me = {tid:m.account.tid, token:me.token, username:m.account.username, admin:!!m.account.admin}; saveSess(); go("home"); }
+        if(m && m.ok && m.account){ me = {tid:m.account.tid, token:me.token, username:m.account.username, admin:!!m.account.admin}; saveSess(); go("home"); }
         else { me = null; go("landing"); }
       });
     } else {
       go("landing");
     }
   });
+
+  setTimeout(function(){
+    var bb = $("boot");
+    if(bb && $("view").innerHTML === ""){
+      bootFail("Still loading. Check your connection and try again.");
+    }
+  }, 12000);
 }
 
 boot();
