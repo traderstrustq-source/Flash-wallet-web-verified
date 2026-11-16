@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta charset="UTF-8">
 <title>Flash Wallet</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <style>
-:root{--bg:#05060a;--card:#0f121a;--line:#1c2130;--txt:#e8eaf2;--mut:#94a3b8;--acc:#3b82f6;--acc2:#22c55e;--warn:#f59e0b;--bad:#ef4444;--r:18px;--shadow:0 10px 40px rgba(0,0,0,.55)}
+/* ---------- GLOBAL ---------- */
+:root{
+  --bg:#05060a;--card:#0f121a;--line:#1c2130;--txt:#e8eaf2;--mut:#94a3b8;--acc:#3b82f6;--acc2:#22c55e;--warn:#f59e0b;--bad:#ef4444;--r:18px;--shadow:0 10px 40px rgba(0,0,0,.55)}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html,body{height:100%}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--txt);min-height:100vh}
@@ -80,13 +82,69 @@ label.lab{display:block;font-size:11px;color:var(--mut);margin-bottom:6px;font-w
 .toast{position:fixed;left:50%;bottom:100px;transform:translateX(-50%);background:#0f121a;border:1px solid var(--line);padding:10px 16px;border-radius:14px;font-size:13px;z-index:99;max-width:86%}
 .auth{max-width:410px;margin:0 auto;padding:24px 20px 120px}
 .auth .hero{padding-top:4px}
-.auth-card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:28px 22px;margin:20px 20px 0}
-.auth-card h2{font-size:16px;font-weight:800;margin-bottom:8px}
-.auth-sub{font-size:12.5px;color:var(--mut);margin-bottom:22px;line-height:1.5}
-.form-group{margin-bottom:14px}
-.err{color:var(--bad);font-size:12px;margin-top:6px;text-align:center}
-body.auth-mode{background:#eaf0ff;color:#101b45}
-.auth-panel{background:#f7faff;border-radius:24px;padding:22px;border:1px solid #fff}.auth-field{background:#f0f4ff;border-radius:16px;padding:12px;border:1px solid #fff}.auth-submit{background:linear-gradient(90deg,#3187ff,#1749dc);color:#fff;border-radius:18px;padding:16px;border:0}.wallet-mode .tile{background:#171d19;border-radius:18px;border-color:#303b2d}.wallet-mode .btn.primary{background:#b9f65b;color:#15210c;border-color:#b9f65b}
+.auth-card{background:#ffffff;border:1px solid #ffffff;border-radius:26px;padding:26px 22px;margin:20px 18px 0;box-shadow:0 18px 50px rgba(37,99,235,.14)}
+.auth-card h2{color:#0f1b3d}
+.auth-card label.lab{color:#7b89a8}
+.auth-card .input{background:#f2f6ff;border:1px solid #ffffff;border-radius:16px;color:#0f1b3d;border-radius:16px}
+.auth-card .input:focus{border-color:var(--acc);box-shadow:0 0 0 4px rgba(49,135,255,.18)}
+.auth-card .btn.primary{background:linear-gradient(90deg,#3187ff,#1749dc);color:#fff;border-radius:18px;box-shadow:0 12px 28px rgba(23,73,220,.32)}
+.auth-card .btn.secondary{background:#ffffff;color:#1749dc;border:1px solid #dbe6ff;border-radius:16px}
+.auth-card .btn.good{background:linear-gradient(90deg,#3187ff,#1749dc);color:#fff}
+.auth-card .small{color:#7b89a8}
+.auth-card .divider{background:#dbe6ff;opacity:1}
+.auth-card .err{color:#dc2626}
+.auth-card .toast{background:#0f1b3d;border-color:#0f1b3d;color:#fff}
+body.auth-mode .top{display:none}
+body.auth-mode .tabs{display:none}
+body.auth-mode .auth{padding:0;max-width:100%}
+body.auth-mode .hero{background:transparent;border-bottom:none;padding:34px 22px 6px;text-align:center}
+body.auth-mode .hero .logo{background:linear-gradient(135deg,#3b82f6,#1d4ed8);box-shadow:0 10px 26px rgba(37,99,235,.35)}
+body.auth-mode .hero .brand{color:#0f1b3d;font-size:26px}
+body.auth-mode .hero .brand span{color:#2563eb}
+body.auth-mode .hero p{color:#5a6b8c;font-size:13.5px;margin-bottom:0}
+body.auth-mode .auth-card{background:#ffffff;border:1px solid #ffffff;border-radius:26px;padding:26px 22px;margin:20px 18px 0;box-shadow:0 18px 50px rgba(37,99,235,.14)}
+body.auth-mode .auth-card h2{color:#0f1b3d}
+body.auth-mode label.lab{color:#7b89a8}
+body.auth-mode .input{background:#f2f6ff;border:1px solid #ffffff;color:#0f1b3d;border-radius:16px}
+body.auth-mode .input:focus{border-color:var(--acc);box-shadow:0 0 0 4px rgba(49,135,255,.18)}
+body.auth-mode .btn.primary{background:linear-gradient(90deg,#3187ff,#1749dc);color:#fff;border-radius:18px;box-shadow:0 12px 28px rgba(23,73,220,.32)}
+body.auth-mode .btn.secondary{background:#ffffff;color:#1749dc;border:1px solid #dbe6ff;border-radius:16px}
+body.auth-mode .btn.good{background:linear-gradient(90deg,#3187ff,#1749dc);color:#fff}
+body.auth-mode .small{color:#7b89a8}
+body.auth-mode .divider{background:#dbe6ff;opacity:1}
+body.auth-mode .err{color:#dc2626}
+body.auth-mode .toast{background:#0f1b3d;border-color:#0f1b3d;color:#fff}
+body.wallet-mode{background:#070a08;color:#e9f2e6}
+body.wallet-mode #app{background:#070a08}
+body.wallet-mode .top{background:rgba(7,10,8,.94);border-bottom:1px solid #1e2a20}
+body.wallet-mode .top h1{color:#eaf7e4}
+body.wallet-mode .hero{background:radial-gradient(600px circle at 50% -20%, rgba(185,246,91,.16), transparent 62%);border-bottom:1px solid #1e2a20}
+body.wallet-mode .hero .brand{color:#f2fbea}
+body.wallet-mode .card{background:#101711;border:1px solid #22301f;border-radius:20px}
+body.wallet-mode .card h2{color:#eaf7e4}
+body.wallet-mode label.lab{color:#7f9b83}
+body.wallet-mode .input{background:#0b120c;border:1px solid #22301f;color:#eaf7e4;border-radius:16px}
+body.wallet-mode .btn.primary{background:#b9f65b;color:#14210b;border-color:#b9f65b;box-shadow:none}
+body.wallet-mode .btn.good{background:#b9f65b;color:#14210b}
+body.wallet-mode .btn.secondary{background:#141d15;color:#eaf7e4;border:1px solid #22301f}
+body.wallet-mode .tile{background:#101711;border:1px solid #22301f;border-radius:20px}
+body.wallet-mode .tile .v{color:#d7ff8a}
+body.wallet-mode .item{background:#101711;border:1px solid #22301f}
+body.wallet-mode .wal{background:#101711;border:1px solid #22301f}
+body.wallet-mode .ev{background:#101711;border:1px solid #22301f}
+body.wallet-mode .plan{background:#101711;border:1px solid #22301f}
+body.wallet-mode .plan.sel{border-color:#b9f65b}
+body.wallet-mode .net{background:#16201a;border:1px solid #22301f;color:#cfe3cd}
+body.wallet-mode .net.on{background:#b9f65b;color:#14210b;border-color:#b9f65b}
+body.wallet-mode .msg.a{background:#b9f65b;color:#14210b}
+body.wallet-mode .msg.u{background:#b9f65b;color:#14210b}
+body.wallet-mode .stat b{color:#d7ff8a}
+body.wallet-mode .pill{background:rgba(185,246,91,.12);color:#c9f77f;border-color:rgba(185,246,91,.3)}
+body.wallet-mode .pill.green{background:rgba(185,246,91,.18);color:#d7ff8a;border-color:rgba(185,246,91,.35)}
+body.wallet-mode .tabs{background:rgba(7,10,8,.96);border-top:1px solid #1e2a20}
+body.wallet-mode .tab.on{color:#b9f65b}
+body.wallet-mode .tab.on .i{color:#b9f65b}
+body.wallet-mode .toast{background:#16201a;border-color:#2c3d2b;color:#eaf7e4}
 </style>
 </head>
 <body>
@@ -98,15 +156,19 @@ body.auth-mode{background:#eaf0ff;color:#101b45}
   <div class="auth" id="view"></div>
   <div class="tabs" id="tabs"></div>
 </div>
+
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script>
-var APP_SECRET = "fw_live_7Kq2Vn8Rt5Xw9Ym3Zb6Pd4Ls";
-var apiBase = "https://api.telebotcreator.com/new-webhook?data=gAAAAABq-NDNYEtlcjkIrj3vxE3Z-Uk1PhheLzvuik9Ftd2BZt_7RAy6quzjGrbmd9R0blamRFMOW4jDN-4sfQ_VFPi7-G7W-6k-uMclK8VKI34prr9PKFzmmjWvaxS5OruU5Vt_q9oI8qEa7xtjKjC8bv1UXFxNmVZuCCqOg-kvPuqOTKzUZxkZenrE5RibV2hDwKMmHN1F";
+/* ---------- GLOBAL ---------- */
+var APP_SECRET = "__APP_SECRET__";
+var apiBase = "__API_URL__";
 var tgId = null;
 var tgUname = "";
 var me = null;
 var bootData = null;
 var sel = {coin:"USDT", net:"TRC20", plan:null, wallet:""};
+
+/* ---------- UTILS ---------- */
 function $(id){ return document.getElementById(id); }
 function esc(s){ return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
 function tgUser(){
@@ -119,55 +181,49 @@ function api(action, data, cb){
   payload.app_key = APP_SECRET;
   if(me && me.tid){ payload.tid = me.tid; payload.token = me.token; }
   var qs = "";
-  var k;
-  for(k in payload){
-    if(!payload.hasOwnProperty(k)){ continue; }
+  for(var k in payload){
+    if(!payload.hasOwnProperty(k)) continue;
     var v = payload[k];
-    if(v === null || v === undefined){ v = ""; }
+    if(v === null || v === undefined) v = "";
     qs += "&" + encodeURIComponent(k) + "=" + encodeURIComponent(String(v));
   }
   if(qs){ qs = qs.slice(1); }
-  var url = apiBase + "&" + qs;
+  var url = apiBase + "?" + qs;
 
   function parse(txt, status){
     var j = null;
     try{ j = JSON.parse(txt); }catch(e){ j = null; }
-    if(j && typeof j === "object"){ return j; }
+    if(j && typeof j === "object") return j;
     return {ok:false, error:"bad_response", http:status, text:String(txt).slice(0,120)};
   }
 
-  if(!window.fetch){
-    xbk();
-    return;
-  }
   var done = false;
-  fetch(url, {method:"GET", cache:"no-store"}).then(function(r){
-    return r.text().then(function(t){ return {s:r.status, t:t}; });
-  }).then(function(o){
-    if(done){ return; }
-    done = true;
-    cb(parse(o.t, o.s));
-  }).catch(function(){
-    if(done){ return; }
+  function finish(j){ if(done){ return; } done = true; cb(j); }
+
+  if(window.fetch){
+    fetch(url, {method:"GET", cache:"no-store"}).then(r=>r.text()).then(t=>finish(parse(t, r.status))).catch(()=>xbk());
+  } else {
     xbk();
-  });
+  }
 
   function xbk(){
     var x = new XMLHttpRequest();
     x.open("GET", url, true);
     x.timeout = 25000;
     x.onreadystatechange = function(){
-      if(x.readyState==4 && !done){ done = true; cb(parse(x.responseText, x.status)); }
+      if(x.readyState===4){ done = true; finish(parse(x.responseText, x.status)); }
     };
-    x.onerror = function(){ if(!done){ done = true; cb({ok:false, error:"network"}); } };
+    x.onerror = function(){ done = true; finish({ok:false, error:"network"}); };
     x.send();
   }
 }
+
+/* ---------- UI HELPERS ---------- */
 function toast(t){
   var d = document.createElement("div");
   d.className = "toast"; d.textContent = t;
   document.body.appendChild(d);
-  setTimeout(function(){ d.remove(); }, 2600);
+  setTimeout(()=>d.remove(), 2600);
 }
 function go(screen){
   document.body.className = (screen=="landing" || screen=="login" || screen=="signup" || screen=="forgot" || screen=="recover") ? "auth-mode" : "wallet-mode";
@@ -193,22 +249,12 @@ function setTab(s){
   var h = "";
   var ics = ["🏠","💱","💳","🔗","🛟"];
   for(var i=0;i<tabs.length;i++){
-    h += '<div class="tab'+(s==tabs[i][0]?" on":"")+'" onclick="go(\''+tabs[i][0]+'\')"><span class="i">'+ics[i]+'</span>'+tabs[i][1]+'</div>';
+    h += '<div class="tab'+(s==tabs[i][0]?" on":"")+'" onclick="go(\\''+tabs[i][0]+'\\')"><span class="i">'+ics[i]+'</span>'+tabs[i][1]+'</div>';
   }
   t.innerHTML = h;
 }
-function requireAuth(){
-  if(!me){ go("login"); return false; }
-  return true;
-}
-function errShow(el, msg){
-  var e = $(el);
-  if(e){ e.textContent = msg; e.style.display = "block"; }
-}
-function hideErr(el){
-  var e = $(el);
-  if(e){ e.style.display = "none"; }
-}
+
+/* ---------- AUTH & SIGN‑IN ---------- */
 function renderLogin(v){
   $("tg").textContent = "";
   v.innerHTML =
@@ -219,8 +265,8 @@ function renderLogin(v){
   '<div class="form-group"><label class="lab">Password</label><input class="input" id="li_p" type="password" placeholder="your password"></div>'+
   '<div class="err" id="li_err" style="display:none"></div>'+
   '<button class="btn primary" onclick="doLogin()">Sign in</button>'+
-  '<div class="row mt"><a class="btn secondary" onclick="go(\'forgot\')">Forgot password</a><a class="btn secondary" onclick="go(\'recover\')">Recover account</a></div>'+
-  '<div class="divider"></div><div class="center small">No account yet? <a onclick="go(\'signup\')" style="color:var(--acc);font-weight:700">Create account</a></div>'+
+  '<div class="row mt"><a class="btn secondary" onclick="go(\\'forgot\\')">Forgot password</a><a class="btn secondary" onclick="go(\\'recover\\')">Recover account</a></div>'+
+  '<div class="divider"></div><div class="center small">No account yet? <a onclick="go(\\'signup\\')" style="color:var(--acc);font-weight:700">Create account</a></div>'+
   '</div>';
 }
 function renderSignup(v){
@@ -234,7 +280,7 @@ function renderSignup(v){
   '<div class="form-group"><label class="lab">Email (optional)</label><input class="input" id="su_e" placeholder="you@mail.com"></div>'+
   '<div class="err" id="su_err" style="display:none"></div>'+
   '<button class="btn primary" onclick="doSignup()">Create account</button>'+
-  '<div class="divider"></div><div class="center small">Already have an account? <a onclick="go(\'login')" style="color:var(--acc);font-weight:700">Sign in</a></div>'+
+  '<div class="divider"></div><div class="center small"><a class="btn secondary" onclick="go(\\'login\\')" style="color:var(--acc);font-weight:700">Sign in</a></div>'+
   '</div>';
 }
 function renderForgot(v){
@@ -245,7 +291,7 @@ function renderForgot(v){
   '<div class="form-group"><label class="lab">Username or email</label><input class="input" id="fg_k" placeholder="your username / email"></div>'+
   '<div class="err" id="fg_err" style="display:none"></div>'+
   '<button class="btn primary" onclick="doForgot()">Get recovery code</button>'+
-  '<div class="divider"></div><div class="center"><a class="btn secondary" onclick="go(\'login')">Back to sign in</a></div>'+
+  '<div class="divider"></div><div class="center"><a class="btn secondary" onclick="go(\\'login\\')">Back to sign in</a></div>'+
   '</div>';
 }
 function renderRecover(v){
@@ -257,7 +303,7 @@ function renderRecover(v){
   '<div class="form-group"><label class="lab">New password</label><input class="input" id="rc_p" type="password" placeholder="new password"></div>'+
   '<div class="err" id="rc_err" style="display:none"></div>'+
   '<button class="btn primary" onclick="doRecover()">Reset password</button>'+
-  '<div class="divider"></div><div class="center"><a class="btn secondary" onclick="go(\'forgot\')">Back</a></div>'+
+  '<div class="divider"></div><div class="center"><a class="btn secondary" onclick="go(\\'forgot\\')">Back</a></div>'+
   '</div>';
 }
 function doLogin(){
@@ -270,7 +316,6 @@ function doLogin(){
     go("home");
   });
 }
-
 function doSignup(){
   hideErr("su_err");
   var d = {username:$("su_u").value,password:$("su_p").value,email:$("su_e").value};
@@ -283,7 +328,6 @@ function doSignup(){
     go("home");
   });
 }
-
 function doForgot(){
   hideErr("fg_err");
   api("forgot",{username:$("fg_k").value},function(r){
@@ -291,7 +335,6 @@ function doForgot(){
     toast("Recovery code: "+r.recovery+" - save it now!");
   });
 }
-
 function doRecover(){
   hideErr("rc_err");
   api("recover",{recovery:$("rc_c").value,password:$("rc_p").value},function(r){
@@ -300,20 +343,18 @@ function doRecover(){
     go("login");
   });
 }
-
-function renderLanding(v){
-  v.innerHTML =
-  '<div class="hero"><div class="logo">⚡</div><div class="brand">Flash<span>Wallet</span></div>'+
-  '<p style="margin-bottom:22px">Trade 50+ coins, deposit, withdraw and connect your wallet - all inside Telegram.</p>'+
-  '<div class="auth-card">'+
-  '<div class="row"><button class="btn primary" onclick="go(\'signup\')">Sign up</button><button class="btn secondary" onclick="go(\'login\')">Sign in</button></div>'+
-  '<div class="divider"></div><div class="center small">New here? Create an account in seconds.<br>Already have one? Sign in, reset or recover your password.</div>'+
-  '</div>';
+function errShow(el, msg){
+  var e = $(""+el);
+  if(e){ e.textContent = msg; e.style.display = "block"; }
+}
+function hideErr(el){
+  var e = $(""+el);
+  if(e){ e.style.display = "none"; }
 }
 
+/* ---------- STATE & SESSION ---------- */
 function saveSess(){ if(me){ try{ localStorage.setItem("fw_sess", JSON.stringify(me)); }catch(e){} } }
 function loadSess(){ try{ var s = localStorage.getItem("fw_sess"); if(s){ me = JSON.parse(s); } }catch(e){ me = null; } }
-
 function doLogout(){
   me = null;
   try{ localStorage.removeItem("fw_sess"); }catch(e){}
@@ -322,9 +363,19 @@ function doLogout(){
   toast("Signed out");
 }
 
+/* ---------- MAIN ROUTES ---------- */
+function renderLanding(v){
+  v.innerHTML =
+  '<div class="hero"><div class="logo">⚡</div><div class="brand">Flash<span>Wallet</span></div>'+
+  '<p style="margin-bottom:22px">Trade 50+ coins, deposit, withdraw and connect your wallet - all inside Telegram.</p>'+
+  '<div class="auth-card">'+
+  '<div class="row"><button class="btn primary" onclick="go(\\'signup\\')">Sign up</button><button class="btn secondary" onclick="go(\\'login\\')">Sign in</button></div>'+
+  '<div class="divider"></div><div class="center small">New here? Create an account in seconds.<br>Already have one? Sign in, reset or recover your password.</div>'+
+  '</div>';
+}
 function renderHome(v){
   if(!requireAuth()) return;
-  $("tg").innerHTML = '<a onclick="doLogout()" style="cursor:pointer;text-decoration:underline">Logout</a>'+(me.admin?' | <a onclick="go(\'admin\')" style="cursor:pointer;text-decoration:underline">Admin</a>':'');
+  $("tg").innerHTML = '<a onclick="doLogout()" style="cursor:pointer;text-decoration:underline">Logout</a>'+(me.admin?' | <a onclick="go(\\'admin\\')" style="cursor:pointer;text-decoration:underline">Admin</a>':'');
   var c = bootData?bootData.content||{}:{};
   var stats = bootData?bootData.stats||{}:{};
   var bal = me.balance||0;
@@ -337,34 +388,20 @@ function renderHome(v){
   '<div class="grid">'+
   '<div class="tile"><div class="t">Balance</div><div class="v">'+bal+'</div><div class="sub">USDT</div></div>'+
   '<div class="tile"><div class="t">Bonus</div><div class="v">'+bonus+'</div><div class="sub">USDT</div></div>'+
-  '</div>'+
-  '<div class="row mt"><button class="btn primary" onclick="go(\'wallet\')">Deposit</button><button class="btn good" onclick="go(\'wallet\')">Withdraw</button></div>'+
-  (me.admin?'<div class="row mt"><button class="btn secondary" onclick="go(\'admin\')">Open admin panel</button></div>':'');
-  if(ev.length){
-    h += '<div class="card"><h2>Events</h2>';
-    for(var i=0;i<ev.length;i++){ h += '<div class="ev"><div class="d">📅</div><div class="t">'+esc(ev[i])+'</div></div>'; }
-    h += '</div>';
-  }
-  h += '<div class="card"><h2>Live counters</h2>'+
+  '<div class="row mt"><button class="btn primary" onclick="go(\\'wallet\\')">Deposit</button><button class="btn good" onclick="go(\\'wallet\\')">Withdraw</button></div></div>'+
+  (me.admin?'<div class="row mt"><button class="btn secondary" onclick="go(\\'admin\\')">Open admin panel</button></div>':'')+
+  '<div class="card"><h2>Events</h2>'+
+  '<div class="card"><h2>Live counters</h2>'+
   '<div class="stat"><span>Registered users</span><b>'+esc(stats.registered||0)+'</b></div>'+
   '<div class="stat"><span>New today</span><b>'+esc(stats.today||0)+'</b></div>'+
   '<div class="stat"><span>Deposits</span><b>'+esc(stats.deposits||0)+'</b></div>'+
   '<div class="stat"><span>Withdrawals</span><b>'+esc(stats.withdraws||0)+'</b></div>'+
-  '<div class="stat"><span>Trades</span><b>'+esc(stats.trades||0)+'</b></div></div>';
-  if(topw.length){
-    h += '<div class="card"><h2>Top withdraws</h2>';
-    for(var j=0;j<topw.length;j++){ h += '<div class="stat"><span>'+esc(topw[j].label||"")+'</span><b>'+esc(topw[j].value||"")+'</b></div>'; }
-    h += '</div>';
-  }
-  if(topt.length){
-    h += '<div class="card"><h2>Top trades</h2>';
-    for(var k=0;k<topt.length;k++){ h += '<div class="stat"><span>'+esc(topt[k].label||"")+'</span><b>'+esc(topt[k].value||"")+'</b></div>'; }
-    h += '</div>';
-  }
-  h += '</div>';
+  '<div class="stat"><span>Trades</span><b>'+esc(stats.trades||0)+'</b></div></div>'+
+  (topw.length? '<div class="card"><h2>Top withdraws</h2>'+Array.from(topw).map(i=>'<div class="stat"><span>'+esc(i.label||"")+'</span><b>'+esc(i.value||"")+'</b></div>').join('')+'</div>':'')+
+  (topt.length? '<div class="card"><h2>Top trades</h2>'+Array.from(topt).map(i=>'<div class="stat"><span>'+esc(i.label||"")+'</span><b>'+esc(i.value||"")+'</b></div>').join('')+'</div>':'')+
+  '</div>';
   v.innerHTML = h;
 }
-
 function renderTrade(v){
   if(!requireAuth()) return;
   var coins = bootData?bootData.coins||{}:{};
@@ -373,28 +410,22 @@ function renderTrade(v){
   '<div class="card"><h2>Choose a coin</h2><div class="list">';
   for(var i=0;i<names.length;i++){
     var n = names[i];
-    h += '<div class="item" onclick="selCoin(\''+esc(n)+'\')"><div class="ic">'+esc(n.slice(0,2))+'</div><div><div class="nm">'+esc(n)+'</div><div class="sb">'+(coins[n].networks||[]).length+' networks</div></div><div class="ar">›</div></div>';
+    h += '<div class="item" onclick="selCoin(\\''+esc(n)+'\\')"><div class="ic">'+esc(n.slice(0,2))+'</div><div><div class="nm">'+esc(n)+'</div><div class="sb">'+(coins[n].networks||[]).length+' networks</div></div><div class="ar">›</div></div>';
   }
   h += '</div></div><div id="netsel"></div></div>';
   v.innerHTML = h;
   if(sel.coin && coins[sel.coin]) showNets(sel.coin);
 }
-
 function selCoin(c){ sel.coin=c; showNets(c); }
-
 function showNets(c){
   var nets = (bootData.coins[c]||{}).networks||[];
   var h = '<div class="card"><h2>'+esc(c)+' networks</h2><div>';
-  for(var i=0;i<nets.length;i++){
-    h += '<span class="net'+(sel.net==nets[i]?" on":"")+'" onclick="selNet(\''+esc(c)+'\',\''+esc(nets[i])+'\')">'+esc(nets[i])+'</span>';
-  }
+  for(var i=0;i<nets.length;i++){ h += '<span class="net'+(sel.net==nets[i]?" on":"")+'" onclick="selNet(\\'+esc(c)+'\\',\\'+esc(nets[i])+'\\')">'+esc(nets[i])+'</span>'; }
   h += '</div><div class="divider"></div><div id="plans"></div></div>';
   $("netsel").innerHTML = h;
   showPlans(c);
 }
-
 function selNet(c,n){ sel.net=n; showNets(c); }
-
 function showPlans(c){
   var plans = bootData?bootData.plans||[]:[];
   var h = '<h2>Plans for '+esc(c)+' / '+esc(sel.net)+'</h2>';
@@ -402,14 +433,12 @@ function showPlans(c){
     var p = plans[i];
     h += '<div class="plan"><div class="amt">'+esc(p.amount)+' '+esc(c)+' = '+esc(p.returns)+' '+esc(c)+'</div>'+
     '<div class="tm">'+esc(p.seconds)+' seconds</div>'+
-    '<button class="btn '+(sel.plan==p.id?"primary":"")+'" onclick="selPlan(\''+esc(p.id)+'\')">Choose</button></div>';
+    '<button class="btn '+(sel.plan==p.id?"primary":"")+'" onclick="selPlan(\\''+esc(p.id)+'\\')">Choose</button></div>';
   }
   h += '<button class="btn good" onclick="doTrade()">Start trade</button>';
   $("plans").innerHTML = h;
 }
-
 function selPlan(id){ sel.plan=id; toast("Plan selected"); renderTrade($("view")); }
-
 function doTrade(){
   if(!sel.plan){ toast("Pick a plan first"); return; }
   api("trade",{coin:sel.coin,network:sel.net,plan_id:sel.plan},function(r){
@@ -419,22 +448,17 @@ function doTrade(){
     go("home");
   });
 }
-
 function renderWallet(v){
   if(!requireAuth()) return;
   var addr = bootData?bootData.deposit||{}:{};
   var coins = bootData?bootData.coins||{}:{};
   var names = Object.keys(coins);
   var h = '<div class="card mt"><h2>Deposit</h2>'+
-  '<label class="lab">Coin</label><select class="input" id="dp_c">';
-  for(var i=0;i<names.length;i++){ h += '<option>'+esc(names[i])+'</option>'; }
-  h += '</select><label class="lab">Network</label><select class="input" id="dp_n"></select>'+
+  '<label class="lab">Coin</label><select class="input" id="dp_c">'; for(var i=0;i<names.length;i++){ h += '<option>'+esc(names[i])+'</option>'; } h += '</select><label class="lab">Network</label><select class="input" id="dp_n"></select>'+
   '<button class="btn primary" onclick="getAddr()">Get deposit address</button>'+
   '<div id="dp_out" class="mt"></div></div>';
   h += '<div class="card"><h2>Withdraw</h2>'+
-  '<label class="lab">Coin</label><select class="input" id="wd_c">';
-  for(var j=0;j<names.length;j++){ h += '<option>'+esc(names[j])+'</option>'; }
-  h += '</select><label class="lab">Network</label><select class="input" id="wd_n"></select>'+
+  '<label class="lab">Coin</label><select class="input" id="wd_c">'; for(var j=0;j<names.length;j++){ h += '<option>'+esc(names[j])+'</option>'; } h += '</select><label class="lab">Network</label><select class="input" id="wd_n"></select>'+
   '<label class="lab">Amount</label><input class="input" id="wd_a" placeholder="amount">'+
   '<label class="lab">Your address</label><input class="input" id="wd_ad" placeholder="destination address">'+
   '<label class="lab">Txid (payment proof)</label><input class="input" id="wd_tx" placeholder="transaction id">'+
@@ -444,13 +468,11 @@ function renderWallet(v){
   v.innerHTML = h;
   fillNets("dp_c","dp_n"); fillNets("wd_c","wd_n");
 }
-
 function fillNets(cid,nid){
-  var c = $(cid).value; var nets = (bootData.coins[c]||{}).networks||[];
-  var s = $(nid); s.innerHTML="";
+  var c = $(""+cid).value; var nets = (bootData.coins[c]||{}).networks||[];
+  var s = $(""+nid); s.innerHTML="";
   for(var i=0;i<nets.length;i++){ s.innerHTML += '<option>'+esc(nets[i])+'</option>'; }
 }
-
 function getAddr(){
   api("deposit",{coin:$("dp_c").value,network:$("dp_n").value},function(r){
     if(!r.ok){ toast(r.error||"Failed"); return; }
@@ -459,7 +481,6 @@ function getAddr(){
     '<div class="small mt">Send only '+esc(r.coin)+' on the '+esc(r.network)+' network to this address.</div>';
   });
 }
-
 function doWithdraw(){
   api("withdraw",{coin:$("wd_c").value,network:$("wd_n").value,amount:$("wd_a").value,address:$("wd_ad").value,txid:$("wd_tx").value,note:$("wd_no").value},function(r){
     if(!r.ok){ toast(r.error||"Withdraw failed"); return; }
@@ -468,7 +489,6 @@ function doWithdraw(){
     go("home");
   });
 }
-
 function uploadProof(){
   var f = $("up_f").files[0];
   if(!f){ toast("Pick a screenshot first"); return; }
@@ -482,28 +502,25 @@ function uploadProof(){
   rd.readAsDataURL(f);
 }
 
-var wallets = ["Trust Wallet","imToken","Binance Web3 Wallet","MetaMask","Coinbase Wallet","TokenPocket","MathWallet","BitKeep","SafePal","Exodus","Phantom","TronLink"];
+/* ---------- CONNECT WALLET ---------- */
 function renderConnect(v){
   if(!requireAuth()) return;
   var h = '<div class="card mt"><h2>Connect a wallet</h2><p class="small mb">Pick your wallet. The admin will help you connect it so you can withdraw funds.</p><div class="list">';
-  for(var i=0;i<wallets.length;i++){
-    h += '<div class="wal" onclick="askConnect(\''+esc(wallets[i])+'\')"><div class="ic">👛</div><div><div class="nm">'+esc(wallets[i])+'</div><div class="sb">Tap to request connection help</div></div><div class="ar">›</div></div>';
-  }
+  var wallets = ["Trust Wallet","imToken","Binance Web3 Wallet","MetaMask","Coinbase Wallet","TokenPocket","MathWallet","BitKeep","SafePal","Exodus","Phantom","TronLink"];
+  for(var i=0;i<wallets.length;i++){ h += '<div class="wal" onclick="askConnect(\\''+esc(wallets[i])+'\\')"><div class="ic">👛</div><div><div class="nm">'+esc(wallets[i])+'</div><div class="sb">Tap to request connection help</div></div><div class="ar">›</div></div>'; }
   h += '</div></div><div id="cqw"></div>';
   v.innerHTML = h;
 }
-
 function askConnect(w){
   api("connect_wallet",{wallet:w},function(r){
     if(!r.ok){ toast(r.error||"Failed"); return; }
     var qs = r.questions||[];
     var h = '<div class="card"><h2>Connect '+esc(w)+'</h2>';
     for(var i=0;i<qs.length;i++){ h += '<label class="lab">Q'+(i+1)+'</label><input class="input" id="cq_'+i+'" placeholder="'+esc(qs[i])+'">'; }
-    h += '<button class="btn primary" onclick="sendAnswers(\''+esc(w)+'\')">Send answers</button></div>';
+    h += '<button class="btn primary" onclick="sendAnswers(\\''+esc(w)+'\\')">Send answers</button></div>';
     $("cqw").innerHTML = h;
   });
 }
-
 function sendAnswers(w){
   var qs = (bootData.content||{}).connect_questions||[];
   var all = [];
@@ -514,7 +531,7 @@ function sendAnswers(w){
   });
 }
 
-var ticket = {messages:[]};
+/* ---------- SUPPORT ---------- */
 function renderSupport(v){
   if(!requireAuth()) return;
   var h = '<div class="card mt"><h2>Support</h2><div class="chat" id="chat"></div>'+
@@ -523,13 +540,11 @@ function renderSupport(v){
   v.innerHTML = h;
   loadTicket();
 }
-
 function loadTicket(){
   api("support_read",{},function(r){
     if(r.ok && r.ticket){ ticket = r.ticket; drawChat(); }
   });
 }
-
 function drawChat(){
   var c = $("chat"); if(!c) return;
   var h = "";
@@ -539,7 +554,6 @@ function drawChat(){
   }
   c.innerHTML = h;
 }
-
 function sendSupport(){
   var t = $("sp_t").value; if(!t) return;
   api("support_send",{text:t},function(r){
@@ -547,7 +561,6 @@ function sendSupport(){
     else toast(r.error||"Failed");
   });
 }
-
 function sendSupportFile(){
   var f = $("sp_f").files[0];
   if(!f){ toast("Pick a screenshot first"); return; }
@@ -561,6 +574,7 @@ function sendSupportFile(){
   rd.readAsDataURL(f);
 }
 
+/* ---------- ADMIN PANEL ---------- */
 function renderAdmin(v){
   if(!requireAuth()) return;
   if(!me.admin){ v.innerHTML = '<div class="card mt center small">Admin only.</div>'; return; }
@@ -581,7 +595,6 @@ function renderAdmin(v){
   '</div><div class="divider"></div><div id="adm_out"></div></div>';
   v.innerHTML = h;
 }
-
 function admOut(t){ $("adm_out").innerHTML = t; }
 function admUsers(){
   api("admin_users",{},function(r){
@@ -589,9 +602,9 @@ function admUsers(){
     var h = '<h2>Users</h2>';
     for(var i=0;i<r.users.length;i++){
       var x = r.users[i];
-      h += '<div class="stat"><span>@'+esc(x.username)+' (id '+esc(x.tid)+')<br><span class="small">bal '+esc(x.balance)+' | bonus '+esc(x.bonus)+' | '+(x.banned?"BANNED":"ok")+'</span></span><b>'+
-      '<a class="btn" style="width:auto;padding:6px 10px;font-size:11px" onclick="admBal(\''+esc(x.tid)+'\')">Balance</a> '+
-      '<a class="btn" style="width:auto;padding:6px 10px;font-size:11px" onclick="admBan(\''+esc(x.tid)+'\')">Ban</a></b></div>';
+      h += '<div class="stat"><span>@'+esc(x.username)+' (id '+esc(x.tid)+')<br><span class="small">bal '+esc(x.balance)+' | bonus '+esc(x.bonus)+' | '+(x.banned?"BANNED":"ok")+'</span><b>'+
+      '<a class="btn" style="width:auto;padding:6px 10px;font-size:11px" onclick="admBal(\\'+esc(x.tid)+'\\')">Balance</a> '+
+      '<a class="btn" style="width:auto;padding:6px 10px;font-size:11px" onclick="admBan(\\'+esc(x.tid)+'\\')">Ban</a></b></div>';
     }
     admOut(h);
   });
@@ -610,7 +623,7 @@ function admRequests(){
     for(var i=0;i<r.requests.length;i++){
       var q = r.requests[i];
       h += '<div class="stat"><span>'+esc(q.type)+' @'+esc(q.username)+' '+esc(q.amount)+' '+esc(q.coin)+'/'+esc(q.network)+' - '+esc(q.status)+'</span><b>'+
-      (q.status=="pending"?'<a class="btn" style="width:auto;padding:6px 10px;font-size:11px" onclick="admReq(\''+esc(q.id)+'\',\'confirm\')">Confirm</a> <a class="btn danger" style="width:auto;padding:6px 10px;font-size:11px" onclick="admReq(\''+esc(q.id)+'\',\'reject\')">Reject</a>':"")+'</b></div>';
+      (q.status=="pending"?'<a class="btn" style="width:auto;padding:6px 10px;font-size:11px" onclick="admReq(\\''+esc(q.id)+'\\',\\'confirm\\')">Confirm</a> <a class="btn danger" style="width:auto;padding:6px 10px;font-size:11px" onclick="admReq(\\'+esc(q.id)+'\\',\\'reject\\')">Reject</a>':"")+'</b></div>';
     }
     admOut(h);
   });
@@ -623,7 +636,7 @@ function admTickets(){
     var h = '<h2>Support tickets</h2>';
     for(var tid in r.tickets){
       var t = r.tickets[tid];
-      h += '<div class="stat"><span>@'+esc(t.username)+' - '+t.messages.length+' msgs</span><b><a class="btn" style="width:auto;padding:6px 10px;font-size:11px" onclick="admOpen(\''+esc(tid)+'\')">Open</a></b></div>';
+      h += '<div class="stat"><span>@'+esc(t.username)+' - '+t.messages.length+' msgs</span><b><a class="btn" style="width:auto;padding:6px 10px;font-size:11px" onclick="admOpen(\\''+esc(tid)+'\\')">Open</a></b></div>';
     }
     admOut(h);
   });
@@ -635,7 +648,6 @@ function admOpen(tid){
     for(var i=0;i<t.messages.length;i++){
       h += '<div class="msg '+(t.messages[i].from=="user"?"u":"a")+'">'+esc(t.messages[i].text)+'</div>';
     }
-    h += '<div class="row mt"><input class="input" id="rep_t" placeholder="Reply..." style="margin-bottom:0"><button class="btn primary" style="width:auto" onclick="admReply(\''+esc(tid)+'\')">Reply</button></div>';
     admOut(h);
   });
 }
@@ -643,18 +655,22 @@ function admReply(tid){
   var t = $("rep_t").value; if(!t) return;
   api("admin_ticket_reply",{tid:tid,text:t},function(r){ toast(r.ok?"Reply sent":r.error); admOpen(tid); });
 }
+
+/* ---------- BROADCAST ---------- */
 function admBroadcast(){
-  var t = prompt("Broadcast text to ALL users:");
+  var t = prompt("Broadcast text to ALL users (shows inside the app and in Telegram):");
   if(t===null) return;
   api("admin_broadcast",{text:t},function(r){ toast(r.ok?("Sent to "+r.sent+" users"):r.error); });
 }
+
+/* ---------- CONTENT & COINS ---------- */
 function admContent(){
   api("content",{},function(r){
     var c = r.content||{};
     var h = '<h2>Content keys</h2>';
     for(var k in c){
       var val = String(c[k]); if(val.length>40) val = val.slice(0,40)+"...";
-      h += '<div class="stat"><span>'+esc(k)+': '+esc(val)+'</span><b><a class="btn" style="width:auto;padding:6px 10px;font-size:11px" onclick="admSetC(\''+esc(k)+'\')">Edit</a></b></div>';
+      h += '<div class="stat"><span>'+esc(k)+': '+esc(val)+'</span><b><a class="btn" style="width:auto;padding:6px 10px;font-size:11px" onclick="admSetC(\\'+esc(k)+'\\')">Edit</a></b></div>';
     }
     admOut(h);
   });
@@ -701,7 +717,7 @@ function admAddr(){
       for(var i=0;i<nets.length;i++){
         var key = c+"/"+nets[i];
         var val = (r.deposit||{})[key]||"";
-        h += '<div class="stat"><span>'+esc(key)+'</span><b><a class="btn" style="width:auto;padding:6px 10px;font-size:11px" onclick="admSetA(\''+esc(key)+'\')">Set</a></b></div>';
+        h += '<div class="stat"><span>'+esc(key)+'</span><b><a class="btn" style="width:auto;padding:6px 10px;font-size:11px" onclick="admSetA(\\'+esc(key)+'\\')">Set</a></b></div>';
       }
     }
     admOut(h);
@@ -713,16 +729,8 @@ function admSetA(key){
   var parts = key.split("/");
   api("admin_addr",{coin:parts[0],network:parts[1],address:v},function(r){ toast(r.ok?"Address saved":r.error); admAddr(); });
 }
-function admEvents(){
-  var ev = prompt("Events (comma separated):");
-  if(ev===null) return;
-  api("admin_events",{events:ev.split(",").filter(function(x){return x.trim();})},function(r){ toast(r.ok?"Events saved":r.error); });
-}
-function admQuestions(){
-  var q = prompt("Connect questions (comma separated):");
-  if(q===null) return;
-  api("admin_questions",{questions:q.split(",").filter(function(x){return x.trim();})},function(r){ toast(r.ok?"Questions saved":r.error); });
-}
+
+/* ---------- STATS & LOGS ---------- */
 function admStats(){
   api("admin_stats",{},function(r){
     var s = r.stats||{};
@@ -749,6 +757,7 @@ function admLogs(){
   });
 }
 
+/* ---------- BOOTSTRAP ---------- */
 function boot(){
   var tu = tgUser();
   $("tg").textContent = tu?("@"+(tu.username||tu.id)):"web";
@@ -767,6 +776,7 @@ function boot(){
   });
 }
 
+/* ---------- INITIALISATION ---------- */
 boot();
 </script>
 </body>
